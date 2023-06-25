@@ -27,13 +27,10 @@ app.get("/api/persons", (request, response) => {
 });
 
 app.get("/info", (request, response) => {
-  let length = 0;
   Person.find({}).then((persons) => {
-    console.log(persons.length);
-    length = persons.length;
+    response.send(`<p>Phonebook has info for ${persons.length} people </p>
+      <p>${new Date()}</p>`);
   });
-  response.send(`<p>Phonebook has info for ${length} people </p>
-  <p>${new Date()}</p>`);
 });
 
 app.get("/api/persons/:id", (request, response) => {
