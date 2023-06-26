@@ -13,7 +13,11 @@ mongoose
   });
 
 const phonebookSchema = new mongoose.Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true,
+    minLength: 5,
+  },
   number: String,
 });
 
